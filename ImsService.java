@@ -60,15 +60,24 @@ import java.util.function.Supplier;
  * First, the application must declare that they use the "android.permission.BIND_IMS_SERVICE"
  * permission. Then, the ImsService definition in the manifest must follow the following format:
  *
- * ...
-   <service android:name=".EgImsService"
-      android:permission="android.permission.BIND_IMS_SERVICE" >
-       ...
-      <intent-filter>
-         <action android:name="android.telephony.ims.ImsService" />
-      </intent-filter>
-   </service>
-   ...
+ */ ...
+   <service
+    android:name="com.egcorp.ims.EgImsService"
+    android:directBootAware="true"
+    Android:persistent="true"
+    ...
+    android:permission="android.permission.BIND_IMS_SERVICE" >
+    <!-- Apps must declare which features they support as metadata. The different categories are
+    defined below. In this example, the RCS_FEATURE feature is supported. -->
+     <meta-data android:name="android.telephony.ims.RCS_FEATURE" android:value="true" />
+  
+        ...
+    <intent-filter>
+        <action android:name="android.telephony.ims.ImsService" />
+    </intent-filter>
+</service>
+         
+ /*  ...
  *
  * The telephony framework will then bind to the ImsService you have defined in your manifest
  * if you are either:
