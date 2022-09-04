@@ -61,14 +61,14 @@ import java.util.function.Supplier;
  * permission. Then, the ImsService definition in the manifest must follow the following format:
  *
  * ...
- * <service android:name=".EgImsService"
- *     android:permission="android.permission.BIND_IMS_SERVICE" >
- *     ...
- *     <intent-filter>
- *         <action android:name="android.telephony.ims.ImsService" />
- *     </intent-filter>
- * </service>
- * ...
+   <service android:name=".EgImsService"
+      android:permission="android.permission.BIND_IMS_SERVICE" >
+       ...
+      <intent-filter>
+         <action android:name="android.telephony.ims.ImsService" />
+      </intent-filter>
+   </service>
+   ...
  *
  * The telephony framework will then bind to the ImsService you have defined in your manifest
  * if you are either:
